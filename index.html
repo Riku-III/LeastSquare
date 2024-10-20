@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>線形フィッティング</title>
+
+  <style>
+    /* 全体のレイアウトをFlexboxで設定 */
+    .container {
+      display: flex;
+      height: 100vh; /* ページ全体の高さ */
+    }
+
+    /* 左側のフォーム部分 */
+    .form-container {
+      width: 40%; /* 左側の幅 */
+      padding: 20px;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+    }
+
+    /* 右側のCanvas部分 */
+    .canvas-container {
+      width: 60%; /* 右側の幅 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+
+    button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 左側の入力フォーム -->
+    <div class="form-container">
+      <h2>データの入力</h2>
+      <form id="coordinateForm">
+        <table id="inputTable">
+          <tbody>
+            <tr>
+              <td></td>
+              <td>X軸<input type="text" name="xAxis[]" required></td>
+              <td>Y軸<input type="text" name="yAxis[]" required></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td><input type="number" step = "0.001" name="xCoord[]" required></td>
+              <td><input type="number" step = "0.001" name="yCoord[]" required></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" id="addRowButton">行を追加</button>
+        <button type="button" id="deleteRowButton">行を削除</button>
+        <button type="submit">送信</button> 
+        <button type="button" id="linearFitting">一次近似</button> 
+      </form>
+    </div>
+
+    <!-- 右側のCanvas -->
+    <div class="canvas-container">
+      <canvas id="graphCanvas" width="500" height="500" style="border:1px solid black;"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
